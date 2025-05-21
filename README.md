@@ -1,0 +1,3 @@
+# ChickenApp
+
+Financial helper
