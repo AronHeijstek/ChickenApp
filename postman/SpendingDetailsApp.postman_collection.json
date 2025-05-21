@@ -1,0 +1,55 @@
+{
+  "info": {
+    "name": "Spending Details App",
+    "_postman_id": "UUID-GOES-HERE",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/users",
+          "host": ["{{baseUrl}}"],
+          "path": ["v1", "users"]
+        }
+      }
+    },
+    {
+      "name": "Get User By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/users/{{accountId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["v1", "users", "{{accountId}}"]
+        }
+      }
+    },
+    {
+      "name": "Get Transactions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/users/{{accountId}}/transactions?from={{from}}&to={{to}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["v1", "users", "{{accountId}}", "transactions"],
+          "query": [
+            {"key": "from", "value": "{{from}}"},
+            {"key": "to", "value": "{{to}}"}
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {"key": "baseUrl", "value": "http://backend:8080"},
+    {"key": "accountId", "value": "acc_peter"},
+    {"key": "from", "value": ""},
+    {"key": "to", "value": ""}
+  ]
+}

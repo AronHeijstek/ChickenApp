@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: chicken-financial-helper
+  datasource:
+    url: jdbc:postgresql://localhost:5432/chicken_db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  kafka:
+    bootstrap-servers: 116.203.98.217:9092
+    consumer:
+      group-id: my_group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    properties:
+      servers:  116.203.98.217:9092
+      bootstrap:
+        servers: 116.203.98.217:9092
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# JWT Configuration
+app:
+  jwt:
+    secret: 54fb0d16c1054cdcc73be19a6560dba6fb4a0bdc014b5cfb25d3dc1e166a1275
+    expiration-ms: 86400000 # 24 hours
+
+# TPP API Configuration
+tpp:
+  api:
+    base-url: https://api.spendstream.nl/v1
+    
+# OpenAPI configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+# Logging Configuration
+logging:
+  level:
+    root: INFO
+    com.app.chicken: DEBUG
+    com.app.chicken.security: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+    org.springframework.kafka: INFO 
